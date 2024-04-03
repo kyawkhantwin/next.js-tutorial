@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg : #0d0c22;
+  --bgSoft : #2d2b42;
+  --text : white;
+  --textSoft : #e5e5e5;
+  --btn: #3673fd;
+  }
+
+  *{
+    margin: 0;
+    padding: 0;
+  }
+
+
+
+
+body {
+  @apply text-color-white bg-color-dark
+}
+/* .container{
+ width: 1566px;
+ margin: auto;
+} */
+
+@layer utilities {
+
+  .container {
+    @apply  px-5 md:pl-14 w-full md:w-[80vw]  mx-auto min-h-screen flex flex-col justify-between;
+  }
+  .btn {
+    @apply px-5 py-3 rounded-md 
+  }
+  /* Add more utility classes as needed */
+}
+
+
+
+/* @layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+} */
