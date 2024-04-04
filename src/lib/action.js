@@ -64,8 +64,6 @@ export const register = async (prevState,formData) => {
     if (user) {
       return { error: "Email alredy registered" };
     }
-    
-    
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -91,15 +89,15 @@ export const login = async (prevState,formData) => {
   try {
     await signIn("credentials", { username, password });
   } catch (error) {
-    console.log("error" , error.message)
+  
     if (error.message.includes('CredentialsSignin')){
     return  {error: "Invalid username or password"}
-
     }
     if (isRedirectError(error)) {
        throw error
     }
-   
-    return  {error : "Something Went wrong" }
+
+    return  {error : "something went wrong"}
+
   }
 };
