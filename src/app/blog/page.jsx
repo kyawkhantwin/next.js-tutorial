@@ -9,24 +9,24 @@ export const metadata = {
 };
 
 // WITH AN API
-// const getData = async () =>{
-//   const res = await fetch("https://jsonplaceholder.typicode.com/posts",{next: {revalidate:3600}})
-//   if(!res.ok){
-//     throw new Error("Something went wrong")
-//   }
-//   const data = await res.json()
-//   return data
-// }
+const getData = async () =>{
+  const res = await fetch("http://localhost:3000/api/blog",{next: {revalidate:3600}})
+  if(!res.ok){
+    throw new Error("Something went wrong")
+  }
+  const data = await res.json()
+  return data
+}
 
 
 
 const BlogPage =async () => {
   //WITH API
-  // const posts = await getData()
+  const posts = await getData()
 
   //WITHOUT API
   
-  const posts = await getPosts()
+  // const posts = await getPosts()
 
   
   return (

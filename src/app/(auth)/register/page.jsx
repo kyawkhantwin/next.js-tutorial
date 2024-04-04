@@ -1,9 +1,12 @@
-
+import RegisterForm from "@/components/registerForm/registerForm";
+import { register } from "@/lib/action";
 
 const RegisterPage = () => {
   return (
-    <div>RegisterPage</div>
-  )
-}
+    <div className=" flex justify-center items-center">
+    <RegisterForm/>
+    </div>
+  );
+};
 
-export default RegisterPage
+export default RegisterPage;

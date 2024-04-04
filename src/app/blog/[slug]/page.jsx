@@ -4,19 +4,23 @@ import Image from "next/image";
 import { Suspense } from "react";
 
 // FETCH DATA WITH AN API
-// const getData = async (id) => {
-//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
+const getData = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
 
-//   if (!res.ok) {
-//     throw new Error("Something went wrong");
-//   }
-//   const data = await res.json();
-//   return data;
-// };
+  if (!res.ok) {
+    throw new Error("Something went wrong");
+  }
+  const data = await res.json();
+  return data;
+};
 
 export const generateMetadata = async ({ params }) => {
   const { slug } = params;
-  const post = await getPost(slug);
+// fetch with an api
+const post = await getData(slug)
+
+// fetch without api
+  // const post = await getPost(slug);
 
   return {
     title: post.title,
