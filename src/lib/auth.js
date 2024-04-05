@@ -6,7 +6,6 @@ import { User } from "./models";
 import bcrypt from "bcrypt";
 import { authConfig } from "./auth.config";
 
-
 const login = async (credentials) => {
   const { username, password } = credentials;
 
@@ -15,17 +14,17 @@ const login = async (credentials) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-       throw new Error("User not register")
+      throw new Error("User not register");
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) {
-       throw new Error("Wrong password")
+      throw new Error("Wrong password");
     }
     return user;
   } catch (error) {
-    throw new Error(error)
+    throw new Error(error);
   }
 };
 export const {
@@ -35,9 +34,8 @@ export const {
   signOut,
 } = NextAuth({
   ...authConfig,
-  
-  providers: [
 
+  providers: [
     GitHub({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
@@ -48,14 +46,13 @@ export const {
           const user = await login(credentials);
           return user;
         } catch (error) {
-          return null
+          return null;
         }
       },
     }),
   ],
   callbacks: {
     async signIn({ user, account, profile }) {
-      
       if (account.provider === "github") {
         connectToDb();
         try {
@@ -77,7 +74,6 @@ export const {
       }
       return true;
     },
-    ...authConfig.callbacks
-    
+    ...authConfig.callbacks,
   },
 });

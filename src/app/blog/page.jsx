@@ -34,8 +34,6 @@ const BlogPage =async () => {
       { posts.map((post) => {
         return <div className="w-1/2 md:w-1/3  my-5"  key={post.id}> <PostCard post={post} /> </div> 
       })}
-  
-
     </div>
   );
 };
